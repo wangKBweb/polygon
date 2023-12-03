@@ -1,12 +1,29 @@
 <script setup lang="tsx">
 import HelloWorld from './components/HelloWorld.vue'
 import { createSide } from './utils/index'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const aaa = ref(createSide(6))
+const side = ref(6)
+
+const aaa = computed(() => {
+  return createSide(side.value)
+})
+
+const number = ref(1)
+
 console.log(aaa, '我是aaa');
 
 
+setInterval(() => {
+  number.value++
+  if (!(number.value % 3)) {
+    side.value = 10
+  } else if (!(number.value % 2)) {
+    side.value = 8
+  } else {
+    side.value = 6
+  }
+}, 1000)
 
 
 </script>
@@ -35,5 +52,6 @@ console.log(aaa, '我是aaa');
   height: 1px;
   background-color: black;
   transform-origin: 50px 0;
+  transition: all .5s;
 }
 </style>
