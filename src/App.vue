@@ -12,16 +12,9 @@ console.log(aaa, '我是aaa');
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
     <component :is="aaa"></component>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
@@ -41,6 +34,6 @@ console.log(aaa, '我是aaa');
   width: 50px;
   height: 1px;
   background-color: black;
-  transform-origin: center left;
+  transform-origin: 50px 0;
 }
 </style>
