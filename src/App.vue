@@ -1,28 +1,24 @@
 <script setup lang="tsx">
-import HelloWorld from './components/HelloWorld.vue'
 import { createSide } from './utils/index'
 import { ref, computed } from 'vue'
 
-const side = ref(6)
+const side = ref(3)
 
 const aaa = computed(() => {
   return createSide(side.value)
 })
 
-const number = ref(1)
-
 console.log(aaa, '我是aaa');
 
+const isTop = ref(true)
 
 setInterval(() => {
-  number.value++
-  if (!(number.value % 3)) {
-    side.value = 10
-  } else if (!(number.value % 2)) {
-    side.value = 8
+  if (isTop.value) {
+    side.value++
   } else {
-    side.value = 6
+    side.value--
   }
+  if (side.value === 10 || side.value === 3) isTop.value = !isTop.value
 }, 1000)
 
 
@@ -48,10 +44,10 @@ setInterval(() => {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 :deep(.sides) {
-  width: 50px;
+  width: 100px;
   height: 1px;
   background-color: black;
-  transform-origin: 50px 0;
+  transform-origin: 100px 0;
   transition: all .5s;
 }
 </style>
